@@ -6,3 +6,6 @@ psycopg2
 email-validator
 confluent-kafka
 httpx
+fastavro
+pydantic
+pydantic-settings

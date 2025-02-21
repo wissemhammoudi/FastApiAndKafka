@@ -64,9 +64,9 @@ services:
     volumes:
       - postgres_data:/var/lib/postgresql/data 
   application:
-    build: ./fastApi
+    build: ./app
     volumes:
-      - ./fastApi:/app
+      - ./app:/app
     ports:
       - "8000:8000" 
     depends_on:

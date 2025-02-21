@@ -8,8 +8,8 @@ docker exec -ti kafka /opt/kafka/bin/kafka-cluster.sh cluster-id --bootstrap-ser
 
 Create a sample topic and produce (or publish) a few messages by running the following command:
 docker exec -ti kafka /opt/kafka/bin/kafka-console-producer.sh --bootstrap-server :9092 --topic demo
+
 After running, you can enter a message per line
-docker exec -ti broker /opt/kafka/bin/kafka-console-producer.sh --bootstrap-server broker:9092 --topic test
 
 
 Confirm the messages were published into the cluster by consuming the messages:
