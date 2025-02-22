@@ -1,0 +1,39 @@
+Follow these steps to set up a Kafka container and produce/consume messages.
+
+### Step 1: Start a Kafka Container
+To run a Kafka container, execute the following command:
+
+```bash
+docker run -d --name=kafka -p 9092:9092 apache/kafka
+```
+
+This will start a Kafka container using the `apache/kafka` image and expose port 9092 for communication with Kafka.
+
+### Step 2: Verify the Kafka Cluster
+Once the Kafka container is running, verify that the cluster is up and running by executing the following command:
+
+```bash
+docker exec -ti kafka /opt/kafka/bin/kafka-cluster.sh cluster-id --bootstrap-server localhost:9092
+```
+
+This command will return the cluster ID, confirming that Kafka is operational.
+
+### Step 3: Create a Kafka Topic and Produce Messages
+Next, create a sample topic (e.g., `demo`) and publish a few messages to it using the Kafka producer. Run the following command:
+
+```bash
+docker exec -ti kafka /opt/kafka/bin/kafka-console-producer.sh --bootstrap-server localhost:9092 --topic demo
+```
+
+After running this command, you can type messages line-by-line. Each line you type will be published to the `demo` topic.
+
+### Step 4: Consume the Published Messages
+To verify that the messages were successfully published to the Kafka cluster, consume the messages from the `demo` topic by running:
+
+```bash
+docker exec -ti kafka /opt/kafka/bin/kafka-console-consumer.sh --bootstrap-server localhost:9092 --topic demo -
+```
+
+This will display the messages that were published to the `demo` topic.
+
+By following these steps, you can set up a Kafka instance, create topics, and produce/consume messages directly from the command line.
