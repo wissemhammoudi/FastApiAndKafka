@@ -1,14 +1,13 @@
-from fastapi import APIRouter
-from sqlalchemy.orm import Session
-from services import weather
+from fastapi import APIRouter,Depends
 from schemas.weather import WeatherResponse
-from dependencies.database import db_dependency
+from dependencies.database import get_db
 from typing import List
 from services.weather import WeatherService
-router = APIRouter(prefix="/Weather", tags=["Weather"])
-weatherService=WeatherService(db_dependency)
-@router.get("/weathers/", response_model=List[WeatherResponse])
-def read_weathers( limit: int = 10):
-    weathers = weatherService.get_weathers(limit=limit)
-    return weathers
+from sqlalchemy.orm import Session
 
+router = APIRouter(prefix="/Weather", tags=["Weather"])
+@router.get("/weathers/", response_model=List[WeatherResponse])
+def read_weathers(limit: int = 10, db: Session = Depends(get_db)):  
+    """Fetch weather data with a limit."""
+    weather_service = WeatherService(db)  # Instantiate service inside the route
+    return weather_service.get_weathers(limit=limit)

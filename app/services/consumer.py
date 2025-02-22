@@ -1,7 +1,6 @@
 from confluent_kafka import Consumer, KafkaError
 from sqlalchemy.orm import Session
-from models.location import Location
-from models.weather import Weather
+from models.model import Location ,Weather
 import json
 from sqlalchemy.exc import SQLAlchemyError
 

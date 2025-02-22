@@ -1,5 +1,5 @@
 from sqlalchemy.orm import Session
-from models.location import Location
+from models.model import Location
 class LocationService:
     def __init__(self, db: Session):
         self.db = db

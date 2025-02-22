@@ -1,5 +1,5 @@
 from sqlalchemy.orm import Session
-from models.weather import Weather 
+from models.model import Weather 
 
 
 class WeatherService:
